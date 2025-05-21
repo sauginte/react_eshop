@@ -1,23 +1,6 @@
-import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import axios from "axios";
-const Header = () => {
-  const [links, setLinks] = useState([]);
 
-  const fetchData = async () => {
-    const response = await axios.get("https://fakestoreapi.com/products");
-
-    const uniqueCategories = [
-      ...new Set(response.data.map((item) => item.category)),
-    ];
-
-    setLinks(uniqueCategories);
-    console.log(uniqueCategories);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+const Header = ({ links }) => {
   return (
     <>
       <header className={styles.header}>

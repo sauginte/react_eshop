@@ -1,19 +1,6 @@
-import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Product from "../Product/Product";
-import axios from "axios";
-const Main = () => {
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    const response = await axios.get("https://fakestoreapi.com/products");
-
-    setProducts(response.data);
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
+const Main = ({ products }) => {
   return (
     <>
       <h2 className={styles.header}>PRODUCTS</h2>
